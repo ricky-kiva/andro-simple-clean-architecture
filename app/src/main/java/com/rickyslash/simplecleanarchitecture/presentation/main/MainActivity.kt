@@ -1,12 +1,30 @@
-package com.rickyslash.simplecleanarchitecture
+package com.rickyslash.simplecleanarchitecture.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.lifecycle.ViewModelProvider
+import com.rickyslash.simplecleanarchitecture.R
+import com.rickyslash.simplecleanarchitecture.databinding.ActivityMainBinding
+import com.rickyslash.simplecleanarchitecture.presentation.MainViewModel
+import com.rickyslash.simplecleanarchitecture.presentation.MainViewModelFactory
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val factory = MainViewModelFactory.getInstance()
+        val viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
+
+        viewModel.setName("Rickyslash")
+        viewModel.message.observe(this) {
+            binding.tvWelcome.text = it.welcomeMessage
+        }
     }
 }
 
@@ -228,6 +246,10 @@ class MainActivity : AppCompatActivity() {
 //            localDataSource.insertTourism(tourismList)
 //        }
 //    }.asLiveData()
+
+
+// ARCHITECTURAL PATTERN & CLEAN ARCHITECTURE //
+
 
 // Architectural Pattern is a higher level of Design Pattern
 // MVx Pattern (MVVM, MVP, MVC, dll): separating code into 3 layer
