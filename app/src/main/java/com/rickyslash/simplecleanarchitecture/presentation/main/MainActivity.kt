@@ -2,9 +2,7 @@ package com.rickyslash.simplecleanarchitecture.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
-import com.rickyslash.simplecleanarchitecture.R
 import com.rickyslash.simplecleanarchitecture.databinding.ActivityMainBinding
 import com.rickyslash.simplecleanarchitecture.presentation.MainViewModel
 import com.rickyslash.simplecleanarchitecture.presentation.MainViewModelFactory
