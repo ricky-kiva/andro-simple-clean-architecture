@@ -5,9 +5,12 @@ orbs:
     
 jobs:
     build:
+        docker:
+            - image: cimg/openjdk:17.0
         executor: android/android
         steps:
             - checkout
+            - run: java --version
             - restore_cache:
                 key: android-orb-v1-
             - run:
